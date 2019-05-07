@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import appHeader from './components/Header'
+import appHeader from './components/AppHeader'
 
 export default {
   name: 'app',
