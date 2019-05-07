@@ -19,11 +19,18 @@
 <script>
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
+import { mapState } from 'vuex'
 
 export default {
     name: 'app-header',
-    methods: mapActions(['login', 'logout']),
-    computed: mapGetters(['isLoggedIn']),
+    methods: mapActions(['login', 'logout', 'getAccountData']),
+    computed: mapGetters(['isLoggedIn', 'accountData']),
+    created: function() {
+      this.$nextTick(function () {
+        this.getAccountData();
+      })
+    },
+    // computed: mapState(['accountData'])
 }
 </script>
 
