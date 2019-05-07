@@ -1,18 +1,14 @@
 <template>
   <div class="app" id="app">
-    <header>
-      <nav class="navbar navbar-dark navbar-expand bg-dark">
-        <a class="navbar-brand" href="/">My ImageApp</a>
-         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Login</a>
-          </li>
-      
-        </ul>
-      </nav>
-    </header>
+    <app-header />
+
+    <!-- <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    <router-view/> -->
     <main class="main container-fluid py-2">
-      content 
+      <router-view/>
     </main>
     <footer class="footer bg-dark">
       <div class="container-fluid py-2">
@@ -23,15 +19,13 @@
 </template>
 
 <script>
+import appHeader from './components/Header'
 
 export default {
   name: 'app',
   components: {
-
+    appHeader
   },
-  methods: {
-
-  }
 }
 </script>
 
