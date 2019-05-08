@@ -1,16 +1,20 @@
 <template>
   <header>
     <nav class="navbar navbar-dark navbar-expand bg-dark">
-      <router-link class="navbar-brand" to="/">My ImageApp</router-link> 
-      <ul class="navbar-nav ml-auto">
-          <li v-if="isLoggedIn" class="nav-item active">
-          <a @click.prevent="logout" class="nav-link" href="#">Logout</a>
+      <router-link class="navbar-brand" to="/">ImageApp</router-link> 
+      <ul v-if="isLoggedIn" class="navbar-nav ml-auto">
+          <li v-if="accountData" class="nav-link text-white">Welcome {{accountData.url}} </li>
+          <li v-if="accountData" class="nav-link text-white">
+            <img class="rounded-circle avatar-image" :src="accountData.avatar" alt="accountData.url">
           </li>
-          
-          <li v-else class="nav-item active">
-          <a @click.prevent="login" class="nav-link" href="#">Login</a>
+          <li class="nav-item">
+            <a @click.prevent="logout" class="nav-link text-white" href="#">Logout</a>
           </li>
-    
+      </ul>
+      <ul v-else class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a @click.prevent="login" class="nav-link" href="#">Login</a>
+          </li>
       </ul>
     </nav>
   </header>
@@ -19,7 +23,6 @@
 <script>
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
-import { mapState } from 'vuex'
 
 export default {
     name: 'app-header',
@@ -34,3 +37,8 @@ export default {
 }
 </script>
 
+<style lang="scss" scoped>
+  .avatar-image {
+    max-width: 1.5em;
+  }
+</style>

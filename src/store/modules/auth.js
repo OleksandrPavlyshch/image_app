@@ -34,7 +34,7 @@ const actions = {
     },
     async getAccountData({ commit} ) {
         const response = await api.getAccountData(state.userName);
-        commit('setAccountData', response);
+        commit('setAccountData', response.data.data);
     }
 
 };
