@@ -16,6 +16,7 @@ const getters = {
 const actions = {
     logout: ({ commit }) => {
         commit('setToken', null);
+        commit('setAccountData', null);
         window.localStorage.removeItem('imgur_token');
         window.localStorage.removeItem('user_name');
     },
@@ -32,7 +33,7 @@ const actions = {
         window.localStorage.setItem('user_name', query.account_username);
         router.push('/');
     },
-    async getAccountData({ commit} ) {
+    async getAccountData({ commit }) {
         const response = await api.getAccountData(state.userName);
         commit('setAccountData', response.data.data);
     }

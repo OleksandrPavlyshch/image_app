@@ -20,5 +20,14 @@ export default {
                 Authorization: `Client-ID ${CLIENT_ID}`
             }
         })
+    },
+    fetchImages(token) {
+        console.log(token)
+        return axios.get(`${BASE_URL}3/account/me/images`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+
     }
 };

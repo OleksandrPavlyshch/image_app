@@ -10,11 +10,6 @@
     <main class="main container-fluid py-2">
       <router-view/>
     </main>
-    <footer class="footer bg-dark">
-      <div class="container-fluid py-2">
-        <span class="text-light">Footer</span>
-      </div>
-    </footer>
   </div>
 </template>
 
