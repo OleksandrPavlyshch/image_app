@@ -11,8 +11,8 @@
                     v-for="image in images" 
                     :key="image.id"
                     :style="{
-                        width: `${image.width*270/image.height}px`,
-                        flexGrow: `${image.width*270/image.height}`
+                        width: `${image.width*250/image.height}px`,
+                        flexGrow: `${image.width*250/image.height}`
                     }"
                 >
                     <i 
@@ -26,6 +26,7 @@
                         :src="image.link" 
                         :alt="image.title"
                     >
+                    <div v-if="image.name" class="gallery_grid-item-title">{{image.name}}</div>
                 </div>
                 
             </div>
@@ -51,28 +52,46 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.gallery_grid {
-    display: flex;
-    flex-wrap: wrap;
-    &::after {
-        content: '';
-        flex-grow: 999999999;
-    }
-    &-item {
-        margin: 5px;
-        background-color: violet;
-        position: relative;
-        &-spacer {
-            display: block;
+.gallery {
+    overflow-y: auto;
+    &_grid {
+        display: flex;
+        flex-wrap: wrap;
+        &::after {
+            content: '';
+            flex-grow: 999999999;
         }
-        &-image {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            vertical-align: bottom;
+        &-item {
+            margin: 5px;
+            background-color: violet;
+            position: relative;
+            cursor: pointer;
+            &-spacer {
+                display: block;
+            }
+            &-image {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                vertical-align: bottom;
+                z-index: 1;
+            }
+            &-title {
+                position: absolute;
+                z-index: 2;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                color: #fff;
+                background-color: rgba(#000, .6);
+                font-size: 1em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
         }
     }
 }
-
 </style>
 
