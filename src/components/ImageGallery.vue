@@ -2,12 +2,12 @@
     <div>
         <div
              v-if="isLoggedIn"
-            class="image-gallery"
+            class="gallery"
         >
             <h1>Image gallery</h1>
-            <div class="image_grid">
+            <div class="gallery_grid">
                 <div
-                    class="image_grid-item"
+                    class="gallery_grid-item"
                     v-for="image in images" 
                     :key="image.id"
                     :style="{
@@ -16,11 +16,13 @@
                     }"
                 >
                     <i 
+                        class="gallery_grid-item-spacer"
                         :style="{
                             paddingBottom: `${image.height/image.width*100}%`,
                         }"
                     ></i>
                     <img 
+                        class="gallery_grid-item-image"
                         :src="image.link" 
                         :alt="image.title"
                     >
@@ -30,7 +32,6 @@
            
         </div>
         <h1 v-else>Please login</h1>
-     
     </div>
 </template>
 
@@ -50,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.image_grid {
+.gallery_grid {
     display: flex;
     flex-wrap: wrap;
     &::after {
@@ -58,13 +59,13 @@ export default {
         flex-grow: 999999999;
     }
     &-item {
-        margin: 2px;
+        margin: 5px;
         background-color: violet;
         position: relative;
-        i {
+        &-spacer {
             display: block;
         }
-        img {
+        &-image {
             position: absolute;
             top: 0;
             width: 100%;
@@ -73,16 +74,5 @@ export default {
     }
 }
 
-// .image-grid {
-//     display: grid;
-//     // column-count: 3;
-//     grid-template-columns: 1fr 1fr 1fr;
-//     grid-gap: 10px;
-//     grid-template-columns: repeat(auto-fill, minmax(330px,1fr));
-//     grid-auto-rows: 40px;
-//     img {
-//         max-width: 100%;
-//     }
-// }
 </style>
 
