@@ -8,6 +8,9 @@
             <img class="rounded-circle avatar-image" :src="accountData.avatar" alt="accountData.url">
           </li>
           <li class="nav-item">
+            <router-link class="nav-link" to="/">Gallery</router-link>
+          </li>
+          <li class="nav-item">
               <router-link class="nav-link" to="/upload">Upload</router-link>
           </li>
           <li class="nav-item">
@@ -48,5 +51,8 @@ export default {
 <style lang="scss" scoped>
   .avatar-image {
     max-width: 1.5em;
+  }
+  .router-link-exact-active {
+    color: #fff !important;
   }
 </style>
