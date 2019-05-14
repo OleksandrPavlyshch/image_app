@@ -19,6 +19,7 @@ const actions = {
         commit('setAccountData', null);
         window.localStorage.removeItem('imgur_token');
         window.localStorage.removeItem('user_name');
+        router.push('/');
     },
     login: () => {
         api.login();

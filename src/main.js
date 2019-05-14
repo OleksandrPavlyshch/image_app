@@ -4,13 +4,15 @@ import store from './store'
 import Router from 'vue-router'
 import AuthHandler from './components/AuthHandler'
 import ImageGallery from './components/ImageGallery'
+import Upload from './components/Upload'
 
 Vue.config.productionTip = false
 Vue.use(Router)
 
 const routes = [
-  { path: '/', component: ImageGallery},
-  { path: '/oauth2/callback', component: AuthHandler},
+  { path: '/', component: ImageGallery },
+  { path: '/oauth2/callback', component: AuthHandler },
+  { path: '/upload', component: Upload }
 ];
 
 export const router = new Router({

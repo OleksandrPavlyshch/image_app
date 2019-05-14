@@ -3,12 +3,15 @@
     <nav class="navbar navbar-dark navbar-expand bg-dark">
       <router-link class="navbar-brand" to="/">ImageApp</router-link> 
       <ul v-if="isLoggedIn" class="navbar-nav ml-auto">
-          <li v-if="isShowAccontWelcome" class="nav-link text-white">Welcome {{accountData.url}} </li>
-          <li v-if="isShowAccontWelcome" class="nav-link text-white">
+          <li v-if="isShowAccontWelcome" class="nav-link text-white"> {{accountData.url}} </li>
+          <li v-if="isShowAccontWelcome" class="nav-link text-white" :title="accountData.url">
             <img class="rounded-circle avatar-image" :src="accountData.avatar" alt="accountData.url">
           </li>
           <li class="nav-item">
-            <a @click.prevent="logout" class="nav-link text-white" href="#">Logout</a>
+              <router-link class="nav-link" to="/upload">Upload</router-link>
+          </li>
+          <li class="nav-item">
+            <a @click.prevent="logout" class="nav-link" href="#">Logout</a>
           </li>
       </ul>
       <ul v-else class="navbar-nav ml-auto">
