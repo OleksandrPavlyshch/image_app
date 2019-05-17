@@ -3,6 +3,7 @@ import { router } from '../../main';
 
 const state = {
     images: null,
+    editedImage: null,
 
 };
 
@@ -10,31 +11,39 @@ const actions = {
     async fetchImages({ commit, rootState }) {
         const { token } = rootState.auth;
         const response = await api.fetchImages(token);
+        console.log(response.data.data);
         commit('setImages', response.data.data);
     }, 
-    async uploadImages({ comit, rootState}, images) {
+    async uploadImages({rootState}, images) {
         const { token } = rootState.auth;
-        await api.uploadImages(token, images)
-            .then(function (values) {
-                router.push('/');
-            })
-            .catch(function (values) {
-                router.push('/');
-            });
+        try{
+            await api.uploadImages(token, images)
+        } catch {}
         router.push('/');
-
-    }
-
+    },
+    async getImageData({commit, rootState }, id) {
+        const { token } = rootState.auth;
+        const response = await api.getImageData(token, id);
+        console.log(response.data.data);
+        commit('setEditedImage', response.data.data);
+    },
+    cleanImageData({commit}) {
+        commit('setEditedImage', null)
+    },
 };
 
 const getters = {
     images: () => state.images,
+    editedImage: () => state.editedImage,
 
 };
 const mutations = {
     setImages: (state, images) => {
         state.images = images;
-    }
+    },
+    setEditedImage: (state, image) => {
+        state.editedImage = image;
+    },
 };
 
 export default {

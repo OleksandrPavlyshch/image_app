@@ -7,6 +7,7 @@
             <h1>Image gallery</h1>
             <div class="gallery_grid">
                 <div
+                    @click="imageEditHandler(image)"
                     class="gallery_grid-item"
                     v-for="image in images" 
                     :key="image.id"
@@ -26,7 +27,7 @@
                         :src="image.link" 
                         :alt="image.title"
                     >
-                    <div v-if="image.name" class="gallery_grid-item-title">{{image.name}}</div>
+                    <div v-if="image.title" class="gallery_grid-item-title">{{image.title}}</div>
                 </div>
                 
             </div>
@@ -39,11 +40,17 @@
 <script>
 import { mapGetters } from 'vuex';
 import { mapActions } from 'vuex';
+import { router } from '../main';
 
 export default {
     name: 'image-gallery',
     computed: mapGetters(['isLoggedIn', 'images']),
-    methods: mapActions(['fetchImages']),
+    methods: {
+        ...mapActions(['fetchImages']),
+        imageEditHandler: (image) =>{
+            router.push(`/image/${image.id}`);
+        }
+    },
     created() {
         this.fetchImages();
     }

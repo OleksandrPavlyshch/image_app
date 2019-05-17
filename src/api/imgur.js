@@ -38,12 +38,18 @@ export default {
             return axios.post(`${BASE_URL}/3/image`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    // Authorization: `Client- ID ${CLIENT_ID}`,
                 }
             })
         });
 
         return Promise.all(promises);
+    },
 
+    getImageData(token, id) {
+        return axios.get(`${BASE_URL}3/image/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
     }
 };
