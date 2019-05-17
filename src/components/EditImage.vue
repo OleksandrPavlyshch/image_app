@@ -33,7 +33,7 @@
                     </div>
                     <button 
                         class="btn btn-outline-danger btn-lg"
-                        @click.prevent
+                        @click.prevent="cancelAction"
                     >Cancel</button>
                     <button 
                         class="btn btn-success btn-lg ml-3"
@@ -51,6 +51,7 @@
 <script>
 import { mapActions } from 'vuex';
 import { mapGetters } from 'vuex';
+import { router } from '../main';
 
 export default {
     name: 'edit-image',
@@ -62,7 +63,12 @@ export default {
     beforeDestroy: function(){
         this.cleanImageData()
     },
-    methods: mapActions(['getImageData', 'cleanImageData']),
+    methods: {
+        ...mapActions(['getImageData', 'cleanImageData']),
+        cancelAction: function() {
+            router.push('/')
+        }
+    },
     computed: mapGetters(['editedImage']),
 }
 </script>

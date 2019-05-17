@@ -4,10 +4,8 @@
              v-if="isLoggedIn"
             class="gallery"
         >
-            <h1>Image gallery</h1>
             <div class="gallery_grid">
                 <div
-                    @click="imageEditHandler(image)"
                     class="gallery_grid-item"
                     v-for="image in images" 
                     :key="image.id"
@@ -28,6 +26,9 @@
                         :alt="image.title"
                     >
                     <div v-if="image.title" class="gallery_grid-item-title">{{image.title}}</div>
+                    <i
+                        @click="imageEditHandler(image)" 
+                        class="edit-icon fas fa-edit"></i>
                 </div>
                 
             </div>
@@ -72,7 +73,22 @@ export default {
             margin: 5px;
             background-color: violet;
             position: relative;
-            cursor: pointer;
+            .edit-icon {
+                position: absolute;
+                z-index: 3;
+                left: 1em;
+                top: 1em;
+                font-size: 1.5em;
+                opacity: 0;
+                visibility: hidden;
+                color: #fff;
+                cursor: pointer;
+                transition: all .5s ease;
+            }
+            &:hover .edit-icon{
+                opacity: 1;
+                visibility: visible;
+            }
             &-spacer {
                 display: block;
             }
