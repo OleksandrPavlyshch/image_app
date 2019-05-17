@@ -12,7 +12,7 @@
             ref="mediaUploadFile"
             multiple="multiple"
             :accept="imageTypes"
-            @change="onSelectUploadFiles($event)"
+            @change="onSelectUploadFiles($event.target.files)"
         >
 
         <div 
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from 'vuex';
 const imageTypes = ['image/png', 'image/jpeg', 'image/gif'];
 
 
@@ -43,6 +43,7 @@ export default {
        imageTypes: () => imageTypes.join(','),
     },
     methods: {
+        ...mapActions(['uploadImages']),
         startDrag() {
             this.isDragged = true;
         },
@@ -56,6 +57,9 @@ export default {
         onUploadClick() {
             if(this.isDataLoadingProcess) return;
             this.$refs.mediaUploadFile.click();
+        },
+        onSelectUploadFiles(images) {
+            this.uploadImages(images)
         },
     }
 

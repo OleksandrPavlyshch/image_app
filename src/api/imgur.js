@@ -22,12 +22,28 @@ export default {
         })
     },
     fetchImages(token) {
-        console.log(token)
         return axios.get(`${BASE_URL}3/account/me/images`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
         })
+    },
+    uploadImages(token, images) {
+        const promises = Array.from(images).map(image => {
+            const formData = new FormData();
+            formData.append('image', image);
+            formData.append('name', image.name);
+            formData.append('title', image.name);
+
+            return axios.post(`${BASE_URL}/3/image`, formData, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    // Authorization: `Client- ID ${CLIENT_ID}`,
+                }
+            })
+        });
+
+        return Promise.all(promises);
 
     }
 };
