@@ -2,7 +2,7 @@
     <div v-if="editedImage" class="container-fluid">
         <div class="row mb-3">
             <div class="col">
-                <h1>{{editedImage.title}}</h1>
+                <h1>Edit image</h1>
             </div>  
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <label for="title">Title</label>
                         <input 
-                        :value="editedImage.title"
+                        v-model="editedImage.title"
                         type="text" 
                         class="form-control form-control-lg" id="title" 
                         placeholder="Enter title">
@@ -29,7 +29,8 @@
                         placeholder="Enter description"
                         class="form-control form-control-lg" 
                         id="description" 
-                        rows="3">{{editedImage.description}}</textarea>
+                        rows="3"
+                        v-model="editedImage.description"></textarea>
                     </div>
                     <button 
                         class="btn btn-outline-danger btn-lg"
@@ -37,7 +38,7 @@
                     >Cancel</button>
                     <button 
                         class="btn btn-success btn-lg ml-3"
-                        @click.prevent
+                        @click.prevent="saveAction"
                     >Save</button>
                 </form>
             </div>
@@ -64,9 +65,12 @@ export default {
         this.cleanImageData()
     },
     methods: {
-        ...mapActions(['getImageData', 'cleanImageData']),
+        ...mapActions(['getImageData', 'cleanImageData', 'updateImage']),
         cancelAction: function() {
             router.push('/')
+        },
+        saveAction: function() {
+            this.updateImage(this.editedImage);
         }
     },
     computed: mapGetters(['editedImage']),

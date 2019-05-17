@@ -51,5 +51,16 @@ export default {
                 Authorization: `Bearer ${token}`,
             }
         })
+    },
+    updateImage(token, image) {
+        const formData = new FormData();
+        formData.append('title', image.title);
+        formData.append('description', image.description);
+        return axios.post(`${BASE_URL}3/image/${image.id}`, formData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
     }
+
 };

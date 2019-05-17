@@ -30,6 +30,13 @@ const actions = {
     cleanImageData({commit}) {
         commit('setEditedImage', null)
     },
+    async updateImage({ rootState }, image) {
+        const { token } = rootState.auth;
+        try {
+            await api.updateImage(token, image)
+        } catch { }
+        router.push('/');
+    }
 };
 
 const getters = {
