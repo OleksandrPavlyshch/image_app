@@ -7,16 +7,8 @@ import ImageGallery from './components/ImageGallery'
 import Upload from './components/Upload'
 import EditImage from './components/EditImage'
 
-import './styles/quasar.styl'
-import 'quasar-extras/animate'
-import 'quasar-extras/roboto-font'
-import 'quasar-extras/material-icons'
-import Quasar from 'quasar'
-
-
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 Vue.use(Router)
-Vue.use(Quasar)
 
 const routes = [
   { path: '/', component: ImageGallery },

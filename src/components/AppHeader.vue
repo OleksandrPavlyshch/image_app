@@ -1,23 +1,5 @@
 <template>
-
-  <q-header elevated class="header bg-primary text-white">
-    <q-toolbar class=" text-white shadow-2 ">
-      <q-btn flat label="Image app" />
-      <q-btn flat>
-        <router-link class="nav-link" to="/">Gallery</router-link>
-      </q-btn>
-      <q-btn flat>
-        <router-link class="nav-link" to="/upload">Upload</router-link>
-      </q-btn>
-      <q-space />
-      <q-tabs  shrink>
-        <q-tab name="tab1" label="Tab 1" />
-        <q-tab name="tab2" label="Tab 2" />
-        <q-tab name="tab3" label="Tab 3" />
-      </q-tabs>
-    </q-toolbar>
-  </q-header>
-  <!-- <header>
+  <header>
     <nav class="navbar navbar-dark navbar-expand bg-dark">
       <router-link class="navbar-brand" to="/">ImageApp</router-link> 
       <ul v-if="isLoggedIn" class="navbar-nav ml-auto">
@@ -41,7 +23,7 @@
           </li>
       </ul>
     </nav>
-  </header> -->
+  </header>
 </template>
 
 <script>
@@ -67,11 +49,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
   .avatar-image {
     max-width: 1.5em;
   }
