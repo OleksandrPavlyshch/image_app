@@ -1,29 +1,54 @@
 <template>
-  <header>
-    <nav class="navbar navbar-dark navbar-expand bg-dark">
-      <router-link class="navbar-brand" to="/">ImageApp</router-link> 
-      <ul v-if="isLoggedIn" class="navbar-nav ml-auto">
-          <li v-if="isShowAccontWelcome" class="nav-link text-white"> {{accountData.url}} </li>
-          <li v-if="isShowAccontWelcome" class="nav-link text-white" :title="accountData.url">
-            <img class="rounded-circle avatar-image" :src="accountData.avatar" alt="accountData.url">
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/">Gallery</router-link>
-          </li>
-          <li class="nav-item">
-              <router-link class="nav-link" to="/upload">Upload</router-link>
-          </li>
-          <li class="nav-item">
-            <a @click.prevent="logout" class="nav-link" href="#">Logout</a>
-          </li>
-      </ul>
-      <ul v-else class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a @click.prevent="login" class="nav-link text-white" href="#">Login</a>
-          </li>
-      </ul>
-    </nav>
-  </header>
+  <q-header elevated class="glossy">
+      <q-toolbar q-gutter-sm>
+
+        <q-toolbar-title>
+          ImageApp
+        </q-toolbar-title>
+
+        <q-space />
+
+
+        <q-tabs v-if="isLoggedIn" inline-label>
+          <q-route-tab
+            icon="photo_library"
+            to="/"
+            exact
+            label="Gallery"
+          />
+          <q-route-tab
+            icon="cloud_upload"
+            to="/upload"
+            exact
+            label="Upload"
+          />
+        </q-tabs>
+        
+        <q-avatar class="q-mx-md" v-if="isShowAccontWelcome">
+          <img :src="accountData.avatar">
+          <q-tooltip content-class="blue-grey-8" content-style="font-size: 16px">
+            {{accountData.url}}
+          </q-tooltip>
+        </q-avatar>
+        <q-btn 
+          v-if="isLoggedIn"
+          @click="logout" 
+          outline
+          flat
+          round
+          icon="exit_to_app" 
+        />
+
+        <q-btn 
+          v-else
+          outline
+          @click="login" 
+       flat
+          label="login"
+          icon="camera_front" 
+        />
+      </q-toolbar>
+    </q-header>
 </template>
 
 <script>

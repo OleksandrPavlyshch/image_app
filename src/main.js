@@ -7,6 +7,66 @@ import ImageGallery from './components/ImageGallery'
 import Upload from './components/Upload'
 import EditImage from './components/EditImage'
 
+import './styles/quasar.styl'
+import '@quasar/extras/roboto-font/roboto-font.css'
+import '@quasar/extras/material-icons/material-icons.css'
+import {
+  Quasar, 
+  QLayout,
+  QHeader,
+  QDrawer,
+  QPageContainer,
+  QPage,
+  QToolbar,
+  QToolbarTitle,
+  QBtn,
+  QIcon,
+  QList,
+  QItem,
+  QItemSection,
+  QItemLabel,
+  QTabs,
+  QTab,
+  QRouteTab,
+  QSpace,
+  QSeparator,
+  QAvatar,
+  QTooltip,
+  QParallax
+
+} from 'quasar'
+
+Vue.use(Quasar, {
+  config: {},
+  components: {
+    QLayout,
+    QHeader,
+    QDrawer,
+    QPageContainer,
+    QPage,
+    QToolbar,
+    QToolbarTitle,
+    QBtn,
+    QIcon,
+    QList,
+    QItem,
+    QItemSection,
+    QItemLabel,
+    QTabs,
+    QTab,
+    QRouteTab,
+    QSpace,
+    QSeparator,
+    QAvatar,
+    QTooltip,
+    QParallax,
+  },
+  directives: {
+  },
+  plugins: {
+  }
+ })
+
 Vue.config.productionTip = false
 Vue.use(Router)
 

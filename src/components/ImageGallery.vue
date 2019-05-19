@@ -34,7 +34,8 @@
             </div>
            
         </div>
-        <h1 v-else>Please login</h1>
+        
+        <h1 v-else class="need_login">Please login</h1>
     </div>
 </template>
 
@@ -60,6 +61,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.need_login {
+    text-align: center;
+    font-size: 10vmin;
+    padding: 30vh 0;
+}
 .gallery {
     overflow-y: auto;
     &_grid {

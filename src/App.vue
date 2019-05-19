@@ -1,45 +1,23 @@
 <template>
-  <div class="app" id="app">
+  <q-layout view="lHh Lpr lFf">
     <app-header />
-
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/> -->
-    <main class="main container-fluid py-2">
-      <router-view/>
-    </main>
-  </div>
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+  </q-layout>
 </template>
 
 <script>
 import appHeader from './components/AppHeader'
 
 export default {
-  name: 'app',
+  name: 'LayoutDefault',
+
   components: {
-    appHeader
+    appHeader,
   },
 }
 </script>
 
-<style lang="scss">
-  html, 
-  body {
-      height: 100%;
-  }
-  .app {
-    display: flex;
-    min-height: 100%;
-    flex-direction: column;
-  }
-  .main{
-    flex: 1;
-    position: relative;
-    // display: flex;
-    // flex-direction: column;
-  }
-
+<style>
 </style>
-
